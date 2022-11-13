@@ -25,44 +25,45 @@ public class MainActivity extends AppCompatActivity {
         TextView answerTextView = binding.answerTV;
 
         button.setOnClickListener(view1 -> {
-            String answer="";
+            String answer = "";
             String input = inputField.getText().toString();
             int inputNum = Integer.parseInt(input);
             switch (input) {
                 case "1000": {
                     answerTextView.setText(thousand);
+                    break;
                 }
                 case "0": {
                     answerTextView.setText("ნული");
                 }
             }
-                switch (input.length()) {
-                    case 3: {
-                        if(inputNum%100!=0) {
-                            answer = arrHundreds[inputNum / 100 - 1] + " ";
-                            input = Integer.toString(inputNum % 100);
-                            inputNum = Integer.parseInt(input);
-                        } else {
-                            answerTextView.setText(arrHundreds[inputNum / 100 - 1] + "ი");
-                            break;
-                        }
-                    }
-                    case 1:
-                    case 2: {
-                        if (inputNum != 0) {
-                            if (inputNum < 21) {
-                                answer += arrUpToTwenty[inputNum];
-                            } else if ((inputNum / 10) % 2 == 0) {
-                                if (inputNum % 10 == 0)
-                                    answer += dozenNums[(inputNum / 10) - 2] + arrUpToTwenty[(inputNum % 10)];
-                                else
-                                    answer += dozenNums[(inputNum / 10) - 2] + andWord + arrUpToTwenty[(inputNum % 10)];
-                            } else
-                                answer += dozenNums[(inputNum / 10) - 2] + andWord + arrUpToTwenty[(inputNum % 10) + 10];
-                            answerTextView.setText(answer);
-                        }
+            switch (input.length()) {
+                case 3: {
+                    if (inputNum % 100 != 0) {
+                        answer = arrHundreds[inputNum / 100 - 1] + " ";
+                        input = Integer.toString(inputNum % 100);
+                        inputNum = Integer.parseInt(input);
+                    } else {
+                        answerTextView.setText(arrHundreds[inputNum / 100 - 1] + "ი");
+                        break;
                     }
                 }
+                case 1:
+                case 2: {
+                    if (inputNum != 0 ) {
+                        if (inputNum < 21) {
+                            answer += arrUpToTwenty[inputNum];
+                        } else if ((inputNum / 10) % 2 == 0) {
+                            if (inputNum % 10 == 0)
+                                answer += dozenNums[(inputNum / 10) - 2] + arrUpToTwenty[(inputNum % 10)];
+                            else
+                                answer += dozenNums[(inputNum / 10) - 2] + andWord + arrUpToTwenty[(inputNum % 10)];
+                        } else
+                            answer += dozenNums[(inputNum / 10) - 2] + andWord + arrUpToTwenty[(inputNum % 10) + 10];
+                        answerTextView.setText(answer);
+                    }
+                }
+            }
 
         });
     }
